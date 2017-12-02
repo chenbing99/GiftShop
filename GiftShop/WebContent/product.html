@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>叮咚有礼--叮咚一下</title>
+		<meta charset="utf-8"> 
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<!--[if IE]>
+        <script src="js/html5.js"></script>
+<![endif]-->
+<style type="text/css">
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input, abbr, article, aside, command, details, figcaption, figure, footer, header, hgroup, mark, meter, nav, output, progress, section, summary, time {margin: 0;
+padding: 0;}
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, th, figcaption {font-size: 1em;font-style: normal;font-weight: normal;}
+fieldset, iframe {border: medium none;}
+caption, th {text-align: left;}
+table {border-collapse: collapse;border-spacing: 0;}
+article, aside, footer, header, hgroup, nav, section, figure, figcaption {display: block;}
+.clear{clear:both;height:0;overflow:hidden;display:block;}
+.clearfix:after{clear:both;height:0;overflow:hidden;display:block;visibility:hidden;content:".";}
+.left{float:left;}
+.right{float:right;}
+.hidden{display:none;}
+.display{ display :block!important;}
+.none{display:none}
+.radius{-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;behavior: url(pie.htc);}
+
+body{font:12px/30px "宋体"}
+a{color:#3366cc; text-decoration:none}
+
+.selectList{ width:1180px; border:1px solid #e6e6e6; padding:10px; margin:20px auto}
+.selectList a:hover,.selectList a.selected{ background:#3399cc; color:#FFF;}
+.selectList dl{border-bottom:1px dotted #e6e6e6}
+.selectList dt{ width:80px; padding-left:32px; float:left; font-weight:bold}
+.selectList dd{float:left; width:674px;}
+.selectList span{ padding-right:20px;}
+.phoneType span{width:80px; display:inline-block}
+.selectList dl.hasBeenSelected{ border:1px solid #b2d1ff}
+
+.selectedShow{ border:1px solid #F60; padding:1px 17px 1px 5px; margin:4px 10px 0 0; height:17px; line-height:17px; float:left; position:relative;}
+.selectedShow em{ background:url(../images/close.gif) no-repeat; width:13px; height:13px; position:absolute; right:2px; top:3px; display:block; cursor:pointer}
+.eliminateCriteria{color: #FF6600;cursor: pointer;float: left;font-weight: 600;line-height: 21px;margin-top: 4px;width: 80px;}
+</style>
+<script type="text/javascript">
+        $(function(){
+                $(".listIndex a").live("click",function(){
+                        var selectedShow = $(".hasBeenSelected").find("div");
+                        var textTypeIndex = $(this).parents("dl").index();//获取a当前的dl索引值
+                        var text = $(this).text();
+                        $(".listIndex:eq(" + textTypeIndex + ")").find("a").removeClass("selected");
+                        $(this).addClass("selected");
+                        selectedShow.eq(textTypeIndex).removeClass("none");
+                        selectedShow.eq(textTypeIndex).find("label").text(text);
+                        var show = $(".hasBeenSelected").find(".none").length;
+                        if(show < 5 ){
+                                $(".eliminateCriteria").show();
+                                }
+                        })
+                $(".selectedShow em").live("click",function(){
+                        $(this).parents(".selectedShow").addClass("none");
+                        var textTypeIndex = $(this).parents(".selectedShow").index();
+                        $(".listIndex:eq("+textTypeIndex+")").find("a").removeClass("selected");
+                        var show = $(".hasBeenSelected").find(".none").length;
+                        if(show > 4){
+                                $(".eliminateCriteria").hide();
+                                }
+                        })
+                $(".eliminateCriteria").live("click",function(){
+                        $(".hasBeenSelected").find("div").addClass("none");
+                        $(this).hide();
+                        $(".listIndex").find("a").removeClass("selected");
+                        })
+                })
+</script>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+		<link rel="stylesheet" href="css/demo.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/fen.css" />
+		<script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="hea_nav">
+				<a href="index.html"><img src="img/logo.png" class="logo"/></a>
+				<ul>
+					<a href="index.html"><li>首页</li></a>
+					<a href="product.html"><li>叮咚一下</li></a>
+					<a href="blog.html"><li>BLOG</li></a>
+					<a href="personal.html"><li>个人中心</li></a>
+					<a href="message.html"><li>留言板</li></a>s
+				</ul>
+			</div>
+			<div class="hea_right">
+				<p>
+					<a href="register.html">注册</a>|<a class="login_btn">登录</a>
+				</p>
+				<a href="shop_car.html"><p>
+						<i class="iconfont">&#xe600;</i>
+						<span>0件</span>
+					</p>
+					</a>
+					
+
+			</div>
+		</div>
+		<div class="header2">
+				<img src="img/phone_meau.png" class="meau"/>
+				<a href="index.html"><img src="img/logo.png" class="logo"/></a>
+				<a href="shop_car.html"><i class="iconfont">&#xe600;</i><span>1</span></a>
+				<ul class="meau_box">
+					<a href="index.html"><li>首页</li></a>
+					<a href="product.html"><li>叮咚一下</li></a>
+					<a href="blog.html"><li>BLOG</li></a>
+					<a href="personal.html"><li>个人中心</li></a>
+					<a href="message.html"><li>留言板</li></a>
+					<p style="border-right:1px #fff solid;" class="login_btn">登录</p>
+					<a href="register.html"><p>注册</p></a>
+				</ul>
+			</div>
+			<script>
+				$(function(){
+					$(".meau").on("click", function(e) {
+					$(".meau_box").slideToggle();
+					$(document).one("click", function() {
+						$(".meau_box").slideUp();
+					});
+					e.stopPropagation();
+				});
+				$(".meau").on("click", function(e) {
+					e.stopPropagation();
+				});
+				});
+			</script>
+			<script type="text/javascript">
+			$(function(){
+				$(".close").click(function(){
+					$(".login_bg").fadeOut();
+				});
+				$(".login_btn").click(function(){
+					$(".login_bg").slideDown();
+					$(".meau_box").slideUp();
+				});
+			});
+		</script>
+		
+<section class="selectList radius">
+  <dl class="clearfix listIndex">
+           <dt>礼品分类：</dt>
+    <dd class="phoneType">
+        <span><a href="javascript:void(0)">书签</a></span>
+        <span><a href="javascript:void(0)">音乐盒</a></span>
+        <span><a href="javascript:void(0)">毛绒玩具</a></span>
+        <span><a href="javascript:void(0)">桌面摆件</a></span>
+        <span><a href="javascript:void(0)">相册相框</a></span>      
+        <span><a href="javascript:void(0)">电子产品</a></span>
+    </dd>
+  </dl>
+  <dl class="clearfix listIndex">
+             <dt>价格范围：</dt>
+        <dd>
+                <span><a href="javascript:void(0)">1-50</a></span>
+            <span><a href="javascript:void(0)">50-99</a></span>
+            <span><a href="javascript:void(0)">100-299</a></span>
+            <span><a href="javascript:void(0)">300-699</a></span>
+            <span><a href="javascript:void(0)">700以上</a></span>
+        </dd>
+   </dl>
+     <dl class="clearfix listIndex">
+             <dt>材质：</dt>
+        <dd>
+                <span><a href="javascript:void(0)">毛绒</a></span>
+            <span><a href="javascript:void(0)">水晶</a></span>
+            <span><a href="javascript:void(0)">植物</a></span>
+            <span><a href="javascript:void(0)">金属</a></span>
+            <span><a href="javascript:void(0)">木制</a></span>
+        </dd>
+     </dl>
+   <dl class="clearfix listIndex">
+             <dt>类别：</dt>
+        <dd>
+                <span><a href="javascript:void(0)">专属定制</a></span>
+            <span><a href="javascript:void(0)">其他</a></span>
+        </dd>
+     </dl>
+     <dl class="clearfix hasBeenSelected">
+             <dt>您已选择：</dt>
+        <dd>
+                <div class="selectedShow none">
+                    <label></label>
+                <em></em>
+            </div>
+            <div class="selectedShow none">
+                    <label></label>
+                <em></em>
+            </div>
+            <div class="selectedShow none">
+                    <label></label>
+                <em></em>
+            </div>
+            <div class="selectedShow none">
+                    <label></label>
+                <em></em>
+            </div>
+            <div class="selectedShow none">
+                    <label></label>
+                <em></em>
+            </div>
+            <div class="eliminateCriteria none">清除筛选条件</div>
+        </dd>
+     </dl>
+  </section>
+		<div class="product">
+			<ul>
+				
+				<a href="buywood.html"><li>
+					<img src="imgs/wood.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/picture.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/desk.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/plate.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/pen.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/necklace.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/musicbox.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buypig.html"><li>
+					<img src="imgs/pig.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/book.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/dog.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/plant.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/watch.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/bowl.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/plant.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				<a href="buy.html"><li>
+					<img src="imgs/hamster.jpg" />
+					<div class="proli_bg">
+						<div class="proli_bg_box">
+							<div class="proli_top">
+								<p>本周特推</p>
+								<p>叮咚叮咚礼盒50G</p>
+							</div>
+							<p>99.00</p>
+						</div>
+					</div>
+				</li></a>
+				
+				
+			</ul>
+		</div>
+		<div class="login_bg">
+			<div class="login">
+				<img src="img/close.png" class="close"/>
+				<img src="img/login.png" style="margin: 25px 0px;"/>
+				<form action="" method="post">
+					<p class="list">
+						<img src="img/login_pic2.png"/>
+						<input type="text" placeholder="请输入注册时的邮箱/手机号"/>
+					</p>
+					<p class="list">
+						<img src="img/login_pic3.png"/>
+						<input type="password" placeholder="请输入注册时的邮箱/手机号"/>
+					</p>
+					<a href="find.html">忘记密码?</a>
+					<p>
+						<a href="register.html">注册</a>
+						<a>登录</a>
+					</p>
+				</form>
+			</div>
+		</div>
+		
+		<div class="footer">
+			<div class="footer_con">
+				<p>享有 | enjoy</p>
+				<img src="img/footer.png" />
+			</div>
+			<div class="footer_con2">
+				<p>© 2015 dingdongyouli.com All rights reserved.</p>
+				<img src="img/footer_p2.jpg" />
+			</div>
+		</div>
+	</body>
+
+</html>
