@@ -14,24 +14,27 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/fen.css" />
 		<script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+		<style type="text/css">
+		.res_form{height:500px;}
+		.regis{
+		margin: -150px 0 0 500px;}
+    	</style>
 </head>
 <body>
 <div class="header">
 			<div class="hea_nav">
-				<a href="index.html"><img src="img/logo.png" class="logo"/></a>
+				<a href="index.jsp"><img src="img/logo.png" class="logo"/></a>
 				<ul>
-					<a href="index.html"><li>首页</li></a>
-					<a href="product.html"><li>叮咚一下</li></a>
-					<a href="blog.html"><li>BLOG</li></a>
-					<a href="personal.html"><li>个人中心</li></a>
-					<a href="message.html"><li>留言板</li></a>
+					<a href="index.jsp"><li>首页</li></a>
+					<a href="${pageContext.request.contextPath}/gift/list2"><li>叮咚一下</li></a>
+					<a href="personal.jsp"><li>个人中心</li></a>
 				</ul>
 			</div>
 			<div class="hea_right">
 				<p>
-					<a href="register.html">注册</a>|<a class="login_btn">登录</a>
+					<a href="register.jsp">注册</a>|<a class="login_btn">登录</a>|<a href="${pageContext.request.contextPath}/adminlogin.jsp">管理员登录</a>
 				</p>
-				<a href="shop_car.html"><p>
+				<a href="shop_car.jsp"><p>
 						<i class="iconfont">&#xe600;</i>
 						<span>0件</span>
 					</p>
@@ -41,16 +44,16 @@
 		</div>
 		<div class="header2">
 				<img src="img/phone_meau.png" class="meau"/>
-				<a href="index.html"><img src="img/logo.png" class="logo"/></a>
-				<a href="shop_car.html"><i class="iconfont">&#xe600;</i><span>1</span></a>
+				<a href="index.jsp"><img src="img/logo.png" class="logo"/></a>
+				<a href="shop_car.jsp"><i class="iconfont">&#xe600;</i><span>1</span></a>
 				<ul class="meau_box">
-					<a href="index.html"><li>首页</li></a>
-					<a href="product.html"><li>叮咚一下</li></a>
-					<a href="blog.html"><li>BLOG</li></a>
-					<a href="personal.html"><li>个人中心</li></a>
-					<a href="message.html"><li>留言板</li></a>
+					<a href="index.jsp"><li>首页</li></a>
+					<a href="product.jsp"><li>叮咚一下</li></a>
+				
+					<a href="personal.jsp"><li>个人中心</li></a>
+					
 					<p style="border-right:1px #fff solid;" class="login_btn">登录</p>
-					<a href="register.html"><p>注册</p></a>
+					<a href="register.jsp"><p>注册</p></a>
 				</ul>
 			</div>
 			<script>
@@ -70,100 +73,57 @@
 		<div class="register">
 			<p class="res_title">用户注册</p>
 			<div class="res_box">
-				<ul class="res_nav">
-					<li class="active">
-						<i class="iconfont">&#xe602;</i>
-						<span>手机注册</span>
-					</li>
-					<li>
-						<i class="iconfont">&#xe603;</i>
-						<span>邮箱注册</span>
-					</li>
-					<li>
-						<i class="iconfont">&#xe604;</i>
-						<span>用户名注册</span>
-					</li>
-				</ul>
 				<div class="res_form">
-					<form action="" method="post">
+					<form action="user/saveuser" method="post">
+						<p class="res_list">
+							<span>用户名</span>
+							<input type="text" name="username" />
+						</p>
 						<p class="res_list">
 							<span>手机号码</span>
-							<input type="tel" />
+							<input type="tel" name="tel" />
 						</p>
-						<p class="tip">仅支持中国大陆地区手机号码！</p>
-						<p class="res_list" style="margin-top: 0px;">
+						<!-- <p class="res_list" style="margin-top: 0px;">
 							<span>手机验证码</span>
 							<input type="text" style="width: 70px;"/>
 							<span class="yan_code">获取验证码</span>
-						</p>
-						<p class="res_list">
-							<span>设置密码</span>
-							<input type="password" />
-						</p>
-						<p class="res_list">
-							<span>确认密码</span>
-							<input type="password" />
-						</p>
-						<p class="res_btn">注册</p>
-					</form>
-					<p>已有账号？请<a style="color: #AE191B;" class="login_btn">直接登录</a></p>
-				</div>
-				<div class="res_form" style="padding-top: 40px;display: none;">
-					<form action="" method="post">
+						</p> -->
 						<p class="res_list">
 							<span>邮箱地址</span>
-							<input type="email" />
+							<input type="email" name="email" />
 						</p>
+					
 						<p class="res_list">
+						
 							<span>设置密码</span>
-							<input type="tel" />
+							<input type="password" name="password"/>
 						</p>
 						<p class="res_list">
 							<span>确认密码</span>
-							<input type="tel" />
+							<input type="password" name="repassword" />
 						</p>
-						<p class="res_btn">注册</p>
+						<input type="submit" value="注册"/>
 					</form>
-					<p>已有账号？请<a style="color: #AE191B;" class="login_btn">直接登录</a></p>
-				</div>
-				<div class="res_form" style="padding-top: 20px;display: none;">
-					<form action="" method="post">
-						<p class="res_list">
-							<span>用户名</span>
-							<input type="email" />
-						</p>
-						<p class="tip">4-16个字符，允许数字、字母、汉字、下划线，<br />以字母或汉字开头</p>
-						<p class="res_list">
-							<span>设置密码</span>
-							<input type="tel" />
-						</p>
-						<p class="res_list">
-							<span>确认密码</span>
-							<input type="tel" />
-						</p>
-						<p class="res_btn">注册</p>
-					</form>
-					<p>已有账号？请<a style="color: #AE191B;" class="login_btn">直接登录</a></p>
-				</div>
-			</div>
+					<p class="regis">已有账号？请<a style="color: #AE191B;" class="login_btn">直接登录</a></p>
 		</div>
 		<div class="login_bg">
 			<div class="login">
 				<img src="img/close.png" class="close"/>
 				<img src="img/login.png" style="margin: 25px 0px;"/>
-				<form action="" method="post">
+				<form action="user/login" method="post">
 					<p class="list">
 						<img src="img/login_pic2.png"/>
-						<input type="text" placeholder="请输入注册时的邮箱/手机号"/>
+						<input type="text" placeholder="请输入注册时名字" name="username"/>
 					</p>
 					<p class="list">
 						<img src="img/login_pic3.png"/>
-						<input type="password" placeholder="请输入注册时的邮箱/手机号"/>
+						<input type="password" placeholder="请输入密码" name="password"/>
 					</p>
-					<a href="fill_order.html">忘记密码?</a>
+					<a href="order.jsp">忘记密码?</a>
 					<p>
-						<a href="register.html">注册</a>
-						<a>登录</a>
+					
+						<input type="submit" value="注册"/>
+						<input type="submit" value="登录"/>
 					</p>
 				</form>
 			</div>

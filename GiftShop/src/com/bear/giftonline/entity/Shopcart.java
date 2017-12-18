@@ -10,6 +10,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="shopcart")
@@ -17,9 +18,9 @@ import org.hibernate.annotations.CascadeType;
 public class Shopcart {
 	private int id;
 	private String username;
-	private String bookname;
+	private String giftname;
 	private int count;//数量
-	private double bookprice;
+	private double price;
 	private double totalprice;//总价
 	private String delete;//是否删除
 	
@@ -41,17 +42,18 @@ public class Shopcart {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getBookname() {
-		return bookname;
+	
+	public String getGiftname() {
+		return giftname;
 	}
-	public void setBookname(String bookname) {
-		this.bookname = bookname;
+	public void setGiftname(String giftname) {
+		this.giftname = giftname;
 	}
-	public double getBookprice() {
-		return bookprice;
+	public double getPrice() {
+		return price;
 	}
-	public void setBookprice(double bookprice) {
-		this.bookprice = bookprice;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 	public int getCount() {
 		return count;
@@ -74,9 +76,7 @@ public class Shopcart {
 	
 	
 	//一对一 ，一个购物车对应一个用户
-	@OneToOne
-    @Cascade(value=CascadeType.ALL)
-    @PrimaryKeyJoinColumn(name="userid")
+	@OneToOne(mappedBy="shopcart")
 	public User getUser() {
 		return user;
 	}

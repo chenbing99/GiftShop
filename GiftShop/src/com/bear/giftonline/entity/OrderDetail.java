@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
@@ -11,10 +13,10 @@ import javax.persistence.Table;
 public class OrderDetail {
 	private int id;
 	private String username;
-	private String bookname;
-	private double bookcount;
-	private double bookprice;
-	private double totalprice;
+	private String giftname;
+	private int giftcount;
+	private int price;
+	private int totalprice;
 	
 	//关联关系映射
 	private Order order;
@@ -35,39 +37,42 @@ public class OrderDetail {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getBookname() {
-		return bookname;
+	
+	public String getGiftname() {
+		return giftname;
 	}
-	public void setBookname(String bookname) {
-		this.bookname = bookname;
-	}
-	public double getBookprice() {
-		return bookprice;
-	}
-	public void setBookprice(double bookprice) {
-		this.bookprice = bookprice;
-	}
-	public double getBookcount() {
-		return bookcount;
-	}
-	public void setBookcount(double bookcount) {
-		this.bookcount = bookcount;
-	}
-	public double getTotalprice() {
-		return totalprice;
-	}
-	public void setTotalprice(double totalprice) {
-		this.totalprice = totalprice;
+	public void setGiftname(String giftname) {
+		this.giftname = giftname;
 	}
 	
-	//一对一，一个订单详情对应一个订单
-	@OneToOne(mappedBy="ordertail")
+	public int getGiftcount() {
+		return giftcount;
+	}
+	public void setGiftcount(int giftcount) {
+		this.giftcount = giftcount;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	//多对一，多个订单详情对应一个订单
+	@ManyToOne
+	@JoinColumn(name="orderid")
 	public Order getOrder() {
 		return order;
 	}
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+	public int getTotalprice() {
+		return totalprice;
+	}
+	public void setTotalprice(int totalprice) {
+		this.totalprice =(this.price)*(this.giftcount);
+	}
+
 	
 
 }

@@ -20,7 +20,6 @@ public class GiftType {
 	private String name;
 	
 	//关联关系映射 和book
-	private Set giftSet = new HashSet<Gift>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -41,18 +40,5 @@ public class GiftType {
 	}
 
 	
-	//一个类型对应多本书
-	
-	@OneToMany(mappedBy="gifttype", targetEntity=Gift.class, 
-            cascade=CascadeType.ALL)
-	public Set getGiftSet() {
-		return giftSet;
-	}
-
-	public void setGiftSet(Set giftSet) {
-		this.giftSet = giftSet;
-	}
-	
-
-	
+	//一个类型对应多本书	
 }

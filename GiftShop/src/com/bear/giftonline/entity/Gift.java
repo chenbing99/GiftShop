@@ -23,14 +23,12 @@ import org.hibernate.annotations.GenericGenerator;
 public class Gift {
 	private int id;
 	private String name;
-	private String author;
 	private String img;
-	private double price;
-	private int discountprice;//打折商品
+	private int price;
 	//关联关系映射 
 	private GiftType gifttype;
 	private GiftDetail giftdetail;
-	@Id
+    @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
@@ -44,26 +42,13 @@ public class Gift {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAuthor() {
-		return author;
-	}
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-	public double getPrice() {
+	
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
-	
-	public int getDiscountprice() {
-		return discountprice;
-	}
-	public void setDiscountprice(int discountprice) {
-		this.discountprice = discountprice;
-	}
-	
 	
 	public String getImg() {
 		return img;
@@ -71,17 +56,15 @@ public class Gift {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	//一个书对应一个详情
+    //一个书对应一个详情
 	@OneToOne
-	@Cascade(value=CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name="id")
+	@PrimaryKeyJoinColumn(name="giftid")
 	public GiftDetail getGiftdetail() {
 		return giftdetail;
 	}
 	public void setGiftdetail(GiftDetail giftdetail) {
 		this.giftdetail = giftdetail;
 	}
-
 	
 	//多本书对应一个类型
 	@ManyToOne
@@ -93,7 +76,5 @@ public class Gift {
 	public void setGifttype(GiftType gifttype) {
 		this.gifttype = gifttype;
 	}
-	
-	
 	
 }

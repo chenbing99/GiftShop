@@ -18,20 +18,18 @@
 <body>
 <div class="header">
 			<div class="hea_nav">
-				<a href="index.html"><img src="img/logo.png" class="logo"/></a>
+				<a href="index.jsp"><img src="img/logo.png" class="logo"/></a>
 				<ul>
-					<a href="index.html"><li>首页</li></a>
-					<a href="product.html"><li>叮咚一下</li></a>
-					<a href="blog.html"><li>BLOG</li></a>
-					<a href="personal.html"><li>个人中心</li></a>
-					<a href="message.html"><li>留言板</li></a>
+					<a href="index.jsp"><li>首页</li></a>
+					<a href="${pageContext.request.contextPath}/gift/list2"><li>叮咚一下</li></a>
+					<a href="personal.jsp"><li>个人中心</li></a>
 				</ul>
 			</div>
 			<div class="hea_right">
 				<p>
-					<a href="register.html">注册</a>|<a class="login_btn">登录</a>
+					<a href="register.jsp">注册</a>|<a class="login_btn">登录</a>|<a href="${pageContext.request.contextPath}/adminlogin.jsp">管理员登录</a>
 				</p>
-				<a href="shop_car.html"><p>
+				<a href="shop_car.jsp"><p>
 						<i class="iconfont">&#xe600;</i>
 						<span>0件</span>
 					</p>
@@ -41,16 +39,16 @@
 		</div>
 		<div class="header2">
 				<img src="img/phone_meau.png" class="meau"/>
-				<a href="index.html"><img src="img/logo.png" class="logo"/></a>
-				<a href="shop_car.html"><i class="iconfont">&#xe600;</i><span>1</span></a>
+				<a href="index.jsp"><img src="img/logo.png" class="logo"/></a>
+				<a href="shop_car.jsp"><i class="iconfont">&#xe600;</i><span>1</span></a>
 				<ul class="meau_box">
-					<a href="index.html"><li>首页</li></a>
-					<a href="product.html"><li>叮咚一下</li></a>
+					<a href="index.jsp"><li>首页</li></a>
+					<a href="product.jsp"><li>叮咚一下</li></a>
 					<a href="blog.html"><li>BLOG</li></a>
-					<a href="personal.html"><li>个人中心</li></a>
+					<a href="personal.jsp"><li>个人中心</li></a>
 					<a href="message.html"><li>留言板</li></a>
 					<p style="border-right:1px #fff solid;" class="login_btn">登录</p>
-					<a href="register.html"><p>注册</p></a>
+					<a href="register.jsp"><p>注册</p></a>
 				</ul>
 			</div>
 			<script>
@@ -70,6 +68,7 @@
 		<div class="personal">
 			<p class="title" style="margin-bottom: 30px;">我的购物车</p>
 			<div class="per_box">
+			<c:forEach var="b" items="${list2}">
 				<ul class="per_navul shop_carul">
 					<li style="width: 130px;margin-right: 10px;">
 						<input type="checkbox" style="margin-right: 20px;"/>
@@ -86,8 +85,8 @@
 						<input type="checkbox" style="margin-right: 10px;margin-left: 18px;"/>
 						<img src="img/order_pic5.jpg" style="vertical-align: middle;"/>
 					</li>
-					<li style="width: 450px;text-align: left;">泉立方防串染色母片</li>
-					<li style="color: #3CA5F1;">￥49</li>
+					<li style="width: 450px;text-align: left;">${b.name}</li>
+					<li style="color: #3CA5F1;">${b.price}</li>
 					<li>
 						<p class="p5">
 							<span class="num">-</span>
@@ -96,7 +95,7 @@
 						</p>
 					</li>
 					<li>M10</li>
-					<li style="color: #3CA5F1;">2*￥49</li>
+					<li style="color: #3CA5F1;">2*${b.price}</li>
 					<li>删除</li>
 				</ul>
 				<ul class="per_listul shop_carul" style="padding-top: 10px;box-sizing: border-box;">
@@ -104,8 +103,8 @@
 						<input type="checkbox" style="margin-right: 10px;margin-left: 18px;"/>
 						<img src="img/order_pic5.jpg" style="vertical-align: middle;"/>
 					</li>
-					<li style="width: 450px;text-align: left;">泉立方防串染色母片</li>
-					<li style="color: #3CA5F1;">￥49</li>
+					<li style="width: 450px;text-align: left;">${b.name}</li>
+					<li style="color: #3CA5F1;">${b.price}</li>
 					<li>
 						<p class="p5">
 							<span class="num">-</span>
@@ -114,13 +113,14 @@
 						</p>
 					</li>
 					<li>--</li>
-					<li style="color: #3CA5F1;">2*￥49</li>
+					<li style="color: #3CA5F1;">2*${b.price}</li>
 					<li>删除</li>
 				</ul>
+				</c:forEach>
 			</div>
 			<p class="shop_car_totle">
 				不包含运费共计：<span style="font-size: 19px;color: #d20000;">￥147</span>
-				<a class="jie_btn" href="fill_order.html">确认结算</a>
+				<a class="jie_btn" href="order.jsp">确认结算</a>
 			</p>
 		</div>
 		<div class="login_bg">
@@ -138,7 +138,7 @@
 					</p>
 					<a href="find.html">忘记密码?</a>
 					<p>
-						<a href="register.html">注册</a>
+						<a href="register.jsp">注册</a>
 						<a>登录</a>
 					</p>
 				</form>

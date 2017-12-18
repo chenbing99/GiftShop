@@ -21,7 +21,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 
-
 @Entity
 @Table(name="user")
 
@@ -29,15 +28,14 @@ public class User {
 	private int userid;
 	private String username;
 	private String password;
-	private String address;//地址
-	private double telephone;
-	private double email;
-	private String postalcode;//邮政编码
+	private int tel;
+	private String email;
+	
 	
 	//关联关系映射
 	private Shopcart shopcart;
-	private Set orderSet = new HashSet<Order>();
-	private Set logSet = new HashSet<Log>();
+	private Set<Order> orderSet = new HashSet<Order>();
+	private Set<Log> logSet = new HashSet<Log>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -54,40 +52,32 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public double getTelephone() {
-		return telephone;
-	}
-	public void setTelephone(double telephone) {
-		this.telephone = telephone;
-	}
-	public double getEmail() {
+	
+
+	public String getEmail() {
 		return email;
 	}
-	public void setEmail(double email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
+	
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getPostalcode() {
-		return postalcode;
+	public int getTel() {
+		return tel;
 	}
-	public void setPostalcode(String postalcode) {
-		this.postalcode = postalcode;
+	public void setTel(int tel) {
+		this.tel = tel;
 	}
-	
 	//用户和购物车一对一
 	@OneToOne(cascade=CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name="ID")
+	@PrimaryKeyJoinColumn(name="id")
 
 	public Shopcart getShopcart() {
 		return shopcart;
@@ -96,25 +86,25 @@ public class User {
 		this.shopcart = shopcart;
 	}
 	
+	
 	//用户和订单一对多  一个用户可以有多个订单
-	@OneToMany(mappedBy="user", targetEntity=Order.class, 
-            cascade=CascadeType.ALL)
-	public Set getOrderSet() {
+	@OneToMany(mappedBy="user", targetEntity=Order.class,cascade=CascadeType.ALL)
+	public Set<Order> getOrderSet() {
 		return orderSet;
 	}
-	public void setOrderSet(Set orderSet) {
+	public void setOrderSet(Set<Order> orderSet) {
 		this.orderSet = orderSet;
 	}
 	
-	
 	//用户和日志文件一对多，一个用户多个日志文件
-	@OneToMany(mappedBy="user", targetEntity=Log.class, 
-            cascade=CascadeType.ALL)
-	public Set getLogSet() {
+	@OneToMany(mappedBy="user", targetEntity=Log.class,cascade=CascadeType.ALL)
+	public Set<Log> getLogSet() {
 		return logSet;
 	}
-	public void setLogSet(Set logSet) {
+	public void setLogSet(Set<Log> logSet) {
 		this.logSet = logSet;
 	}
+	
+
 	
 }
